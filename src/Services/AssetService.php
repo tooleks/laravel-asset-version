@@ -30,9 +30,9 @@ class AssetService implements AssetServiceContract
     /**
      * @inheritdoc
      */
-    public function get(string $path, bool $secure = null)
+    public function get(string $path, bool $secure = null) : string
     {
-        return asset($this->appendVersion($path), $secure);
+        return asset($this->appendVersionToPath($path), $secure);
     }
 
     /**
@@ -41,7 +41,7 @@ class AssetService implements AssetServiceContract
      * @param string $path
      * @return string
      */
-    protected function appendVersion(string $path)
+    protected function appendVersionToPath(string $path) : string
     {
         return ($this->version) ? ($path . '?v=' . $this->version) : ($path);
     }

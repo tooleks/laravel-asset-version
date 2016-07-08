@@ -24,5 +24,5 @@ interface AssetServiceContract
      * @param bool|null $secure
      * @return string
      */
-    public function get(string $path, bool $secure = null);
+    public function get(string $path, bool $secure = null) : string;
 }
