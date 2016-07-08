@@ -1,6 +1,6 @@
 # The Laravel 5 Assets Versioning Package
 
-This package performs versioning of the asset resources URLs to prevent caching them.
+This package performs versioning of the asset URLs.
 
 Asset link before usage:
 ```
