@@ -2,6 +2,7 @@
     "name": "tooleks/laravel-asset-version",
     "type": "library",
     "description": "The Laravel Assets Versioning Package",
+    "version": "1.0.0",
     "keywords": [
         "php",
         "laravel",
@@ -20,8 +21,6 @@
     "require": {
         "php" : "~7.0"
     },
-    "require-dev": {
-    },
     "autoload": {
         "psr-4": {
             "Tooleks\\LaravelAssetVersion\\": "src"
@@ -30,13 +29,6 @@
     "autoload-dev": {
         "psr-4": {
             "Tooleks\\LaravelAssetVersion\\": "tests"
-        }
-    },
-    "scripts": {
-    },
-    "extra": {
-        "branch-alias": {
-            "master": "1.0-dev"
         }
     }
 }
