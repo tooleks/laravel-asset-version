@@ -1,0 +1,11 @@
+# IDE directory
+/.idea
+
+# Laravel project directory
+/laravel
+
+# Composer packages directory
+/vendor
+
+# Composer lock file
+composer.lock
