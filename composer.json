@@ -1,5 +1,5 @@
 {
-    "name": "Tooleks/LaravelAssetVersion",
+    "name": "tooleks/laravel-asset-version",
     "type": "library",
     "description": "The Laravel Assets Versioning Package",
     "keywords": [
