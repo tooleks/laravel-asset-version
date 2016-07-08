@@ -3,6 +3,8 @@
 namespace Tooleks\LaravelAssetVersion\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
+use Tooleks\LaravelAssetVersion\Services\AssetService;
 
 /**
  * Class AssetServiceProvider.
@@ -14,10 +16,12 @@ class AssetServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->publishes([__DIR__ . '/../../config/assets.php' => config_path('assets.php')], 'config');
+        $this->publishes([
+            __DIR__ . '/../../config/assets.php' => config_path('assets.php')
+        ], 'config');
 
-        $this->app->singleton(\Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract::class, function () {
-            return new \Tooleks\LaravelAssetVersion\Services\AssetService(config('assets.version'));
+        $this->app->singleton(AssetServiceContract::class, function () {
+            return new AssetService(config('assets.version'));
         });
     }
 

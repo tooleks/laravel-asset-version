@@ -3,6 +3,7 @@
 namespace Tooleks\LaravelAssetVersion\Facades;
 
 use Illuminate\Support\Facades\Facade;
+use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
 
 /**
  * Class Asset.
@@ -19,6 +20,6 @@ class Asset extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract::class;
+        return AssetServiceContract::class;
     }
 }
