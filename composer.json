@@ -1,0 +1,42 @@
+{
+    "name": "Tooleks/LaravelAssetVersion",
+    "type": "library",
+    "description": "The Laravel Assets Versioning Package",
+    "keywords": [
+        "php",
+        "laravel",
+        "assets",
+        "versioning"
+    ],
+    "homepage": "https://github.com/tooleks/laravel-asset-version",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Oleksandr Tolochko",
+            "email": "tooleks@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php" : "~7.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Tooleks\\LaravelAssetVersion\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tooleks\\LaravelAssetVersion\\": "tests"
+        }
+    },
+    "scripts": {
+    },
+    "extra": {
+        "branch-alias": {
+            "master": "master"
+        }
+    }
+}
