@@ -67,7 +67,7 @@ Configure assets version number in the `config/assets.php`:
 #### Via Service Object
 
 ```php
-use \Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
+use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
 
 $assetUrl = app(AssetServiceContract::class)->get('css/main.css');
 // $assetUrl == 'http://website.local/css/main.css?v=0.0.1'
@@ -79,7 +79,7 @@ $secureAssetUrl = app(AssetServiceContract::class)->get('css/main.css', true);
 #### Via Service Facade Class
 
 ```php
-use \Tooleks\LaravelAssetVersion\Facades\Asset;
+use Tooleks\LaravelAssetVersion\Facades\Asset;
 
 $assetUrl = Asset::get('css/main.css');
 // $assetUrl == 'http://website.local/css/main.css?v=0.0.1'
