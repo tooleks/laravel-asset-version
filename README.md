@@ -39,7 +39,7 @@ Run following command in the terminal to publish the package file resources:
 php artisan vendor:publish --provider="Tooleks\LaravelAssetVersion\Providers\AssetServiceProvider" --tag="config"
 ```
 
-### Configure Assets Version
+#### Configure Assets Version
 
 Configure assets version number in the `config/assets.php`:
 
