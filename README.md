@@ -2,14 +2,18 @@
 
 This package performs versioning of the asset resources URLs to prevent caching them.
 
-Before usage:
+Asset link before usage:
 ```
 https://website.local/css/main.css
 ```
-After usage:
+Asset link after usage:
 ```
 https://website.local/css/main.css?v=0.0.1
 ```
+
+## Requirements
+
+PHP >= 7.0, Laravel >= 5.0.
 
 ## Installation
 
