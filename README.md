@@ -1,12 +1,12 @@
 # The Laravel 5 Assets Versioning Package
 
-This package performs versioning of the asset URLs.
+This package performs versioning of the asset URL resources.
 
-Asset link before usage:
+Asset link before versioning:
 ```
 https://website.local/css/main.css
 ```
-Asset link after usage:
+Asset link after versioning:
 ```
 https://website.local/css/main.css?v=0.0.1
 ```
