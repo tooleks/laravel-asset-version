@@ -29,10 +29,10 @@ class AssetService implements AssetServiceContract
     /**
      * @inheritdoc
      */
-    public function __construct(string $version, bool $secure = null)
+    public function __construct(string $version, $secure = null)
     {
         $this->version = $version;
-        $this->secure = $secure;
+        $this->secure = (bool)$secure;
     }
 
     /**
@@ -54,7 +54,7 @@ class AssetService implements AssetServiceContract
     /**
      * @inheritdoc
      */
-    public function getSecure() : bool
+    public function getSecure()
     {
         return $this->secure;
     }

@@ -14,9 +14,38 @@ interface AssetServiceContract
      * AssetServiceContract constructor.
      *
      * @param string $version
+     * @param bool|null $secure
      */
-    public function __construct(string $version);
+    public function __construct(string $version, $secure = null);
 
+    /**
+     * Get assets version number.
+     * 
+     * @return string
+     */
+    public function getVersion() : string;
+
+    /**
+     * Set assets version number.
+     * 
+     * @param string $version
+     */
+    public function setVersion(string $version);
+
+    /**
+     * Get secure option.
+     * 
+     * @return bool|null
+     */
+    public function getSecure();
+
+    /**
+     * Set secure option.
+     * 
+     * @param bool $secure
+     */
+    public function setSecure(bool $secure);
+    
     /**
      * Generate an asset path with version parameter for the application.
      *
