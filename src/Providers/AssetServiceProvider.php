@@ -21,7 +21,7 @@ class AssetServiceProvider extends ServiceProvider
         ], 'config');
 
         $this->app->singleton(AssetServiceContract::class, function () {
-            return new AssetService(config('assets.version'));
+            return new AssetService(config('assets.version'), config('assets.secure'));
         });
     }
 
