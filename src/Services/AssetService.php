@@ -13,16 +13,40 @@ use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
 class AssetService implements AssetServiceContract
 {
     /**
-     * Asset version.
+     * Asset version number.
      *
      * @var string
      */
     protected $version;
 
     /**
+     * Asset secure option.
+     *
+     * @var bool|null
+     */
+    protected $secure;
+
+    /**
      * @inheritdoc
      */
-    public function __construct(string $version)
+    public function __construct(string $version, bool $secure = null)
+    {
+        $this->version = $version;
+        $this->secure = $secure;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function getVersion() : string
+    {
+        return $this->version;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setVersion(string $version)
     {
         $this->version = $version;
     }
@@ -30,8 +54,28 @@ class AssetService implements AssetServiceContract
     /**
      * @inheritdoc
      */
+    public function getSecure() : bool
+    {
+        return $this->secure;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function setSecure(bool $secure)
+    {
+        $this->secure = $secure;
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function get(string $path, bool $secure = null) : string
     {
+        if ($secure === null) {
+            $secure = $this->getSecure();
+        }
+
         return asset($this->appendVersionToPath($path), $secure);
     }
 

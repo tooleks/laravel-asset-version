@@ -4,11 +4,11 @@ This package performs versioning of the asset URL resources.
 
 Asset link before versioning:
 ```
-https://website.local/css/main.css
+https://website.domain/path/to/asset.css
 ```
 Asset link after versioning:
 ```
-https://website.local/css/main.css?v=0.0.1
+https://website.domain/path/to/asset.css?v=0.0.1
 ```
 
 ## Requirements
@@ -59,21 +59,21 @@ php artisan vendor:publish --provider="Tooleks\LaravelAssetVersion\Providers\Ass
 Configure assets version number in the `config/assets.php`:
 
 ```php
+...
 'version' => '0.0.1',
+...
 ```
 
-## Usage Examples
+## Basic Usage Examples
 
 #### Via Service Object
 
 ```php
 use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
 
-$assetUrl = app(AssetServiceContract::class)->get('css/main.css');
-// $assetUrl == 'http://website.local/css/main.css?v=0.0.1'
+$assetUrl = app(AssetServiceContract::class)->get('path/to/asset.css'); // 'http://website.domain/path/to/asset.css?v=0.0.1'
 
-$secureAssetUrl = app(AssetServiceContract::class)->get('css/main.css', true);
-// $secureAssetUrl == 'https://website.local/css/main.css?v=0.0.1'
+$secureAssetUrl = app(AssetServiceContract::class)->get('path/to/asset.css', true); // 'https://website.domain/path/to/asset.css?v=0.0.1'
 ```
 
 #### Via Service Facade Class
@@ -81,19 +81,17 @@ $secureAssetUrl = app(AssetServiceContract::class)->get('css/main.css', true);
 ```php
 use Tooleks\LaravelAssetVersion\Facades\Asset;
 
-$assetUrl = Asset::get('css/main.css');
-// $assetUrl == 'http://website.local/css/main.css?v=0.0.1'
+$assetUrl = Asset::get('path/to/asset.css'); // 'http://website.domain/path/to/asset.css?v=0.0.1'
 
-$secureAssetUrl = Asset::get('css/main.css', true);
-// $secureAssetUrl == 'https://website.local/css/main.css?v=0.0.1'
+$secureAssetUrl = Asset::get('path/to/asset.css', true); // 'https://website.domain/path/to/asset.css?v=0.0.1'
 ```
 
 #### In The Layout (Blade Template)
 ```html
-<link href="{{ Asset::get('css/main.css') }}" rel="stylesheet">
+<link href="{{ Asset::get('path/to/asset.css') }}" rel="stylesheet" type="text/css">
 ```
 
 #### In The Layout (PHP Template)
 ```html
-<link href="<?= Asset::get('css/main.css') ?>" rel="stylesheet">
+<link href="<?= Asset::get('path/to/asset.css') ?>" rel="stylesheet" type="text/css">
 ```
