@@ -32,7 +32,7 @@ class AssetService implements AssetServiceContract
     public function __construct(string $version, $secure = null)
     {
         $this->version = $version;
-        $this->secure = (bool)$secure;
+        $this->secure = $secure;
     }
 
     /**
