@@ -28,8 +28,10 @@ return [
     | If secure option is 'false' HTTP will be used for each asset resource URL.
     | Example: http://website.domain/path/to/asset.css?v=0.0.1
     |
+    | If secure option is 'null' schema will be detected automatically.
+    |
     */
 
-    'secure' => false,
+    'secure' => null,
 
 ];

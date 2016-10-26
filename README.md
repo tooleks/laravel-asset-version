@@ -76,6 +76,14 @@ $assetUrl = app(AssetServiceContract::class)->get('path/to/asset.css'); // 'http
 $secureAssetUrl = app(AssetServiceContract::class)->get('path/to/asset.css', true); // 'https://website.domain/path/to/asset.css?v=0.0.1'
 ```
 
+Note: Secure option will be detected automatically if no second argument will be passed into the function and `secure` option configured to `null` in the `config/assets.php`:
+
+```php
+...
+'secure' => null,
+...
+```
+
 #### Via Service Facade Class
 
 ```php
@@ -84,6 +92,14 @@ use Tooleks\LaravelAssetVersion\Facades\Asset;
 $assetUrl = Asset::get('path/to/asset.css'); // 'http://website.domain/path/to/asset.css?v=0.0.1'
 
 $secureAssetUrl = Asset::get('path/to/asset.css', true); // 'https://website.domain/path/to/asset.css?v=0.0.1'
+```
+
+Note: Secure option will be detected automatically if no second argument will be passed into the function and `secure` option configured to `null` in the `config/assets.php`:
+
+```php
+...
+'secure' => null,
+...
 ```
 
 #### In The Layout (Blade Template)
