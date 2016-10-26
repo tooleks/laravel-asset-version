@@ -2,7 +2,7 @@
     "name": "tooleks/laravel-asset-version",
     "type": "library",
     "description": "The Laravel Assets Versioning Package",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "keywords": [
         "php",
         "laravel",
