@@ -13,6 +13,9 @@ use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
  */
 class AssetServiceTest extends TestCase
 {
+    const ASSET_VERSION_NUMBER = '0.0.1';
+    const ASSET_PATH = 'css/styles.css';
+
     /**
      * The base URL to use while testing the application.
      *
@@ -37,7 +40,7 @@ class AssetServiceTest extends TestCase
         $app->make('url')->forceRootUrl($this->baseUrl);
 
         $app->singleton(AssetServiceContract::class, function () {
-            return new AssetService('0.0.1', null);
+            return new AssetService(static::ASSET_VERSION_NUMBER);
         });
 
         return $app;
@@ -57,50 +60,75 @@ class AssetServiceTest extends TestCase
     }
 
     /**
-     * Test URL asset version.
+     * Test asset version.
      */
-    public function testUrlAssetVersion()
+    public function testAssetVersion()
     {
         /** @var AssetService $assetService */
 
         $assetService = $this->app->make(AssetServiceContract::class);
 
-        $assetUrl = $assetService->get('css/styles.css', false);
-        $this->assertTrue(strpos($assetUrl, '?v=0.0.1') !== false);
+        $assetUrl = $assetService->get(static::ASSET_PATH, false);
+        $this->assertTrue(strpos($assetUrl, '?v=' . static::ASSET_VERSION_NUMBER) !== false);
 
-        $secureAssetUrl = $assetService->get('css/styles.css', true);
-        $this->assertTrue(strpos($secureAssetUrl, '?v=0.0.1') !== false);
+        $secureAssetUrl = $assetService->get(static::ASSET_PATH, true);
+        $this->assertTrue(strpos($secureAssetUrl, '?v=' . static::ASSET_VERSION_NUMBER) !== false);
     }
 
     /**
-     * Test URL schema.
+     * Test secure option passed by parameter on service call.
      */
-    public function testUrlSchema()
+    public function testSecureOptionFromParameter()
     {
         /** @var AssetService $assetService */
 
         $assetService = $this->app->make(AssetServiceContract::class);
 
-        $assetUrl = $assetService->get('css/styles.css', false);
+        $assetUrl = $assetService->get(static::ASSET_PATH, false);
         $this->assertTrue(parse_url($assetUrl, PHP_URL_SCHEME) === 'http');
 
-        $secureAssetUrl = $assetService->get('css/styles.css', true);
+        $secureAssetUrl = $assetService->get(static::ASSET_PATH, true);
         $this->assertTrue(parse_url($secureAssetUrl, PHP_URL_SCHEME) === 'https');
     }
 
     /**
-     * Test URL path.
+     * Test secure option passed by configuration file on service init.
      */
-    public function testUrlPath()
+    public function testSecureOptionFromConfig()
+    {
+        /** @var AssetService $assetService */
+
+        $this->app->singleton(AssetServiceContract::class, function () {
+            return new AssetService(static::ASSET_VERSION_NUMBER, true);
+        });
+        $assetService = $this->app->make(AssetServiceContract::class);
+
+        $assetUrl = $assetService->get(static::ASSET_PATH);
+        $this->assertTrue(parse_url($assetUrl, PHP_URL_SCHEME) === 'https');
+
+
+        $this->app->singleton(AssetServiceContract::class, function () {
+            return new AssetService(static::ASSET_VERSION_NUMBER, false);
+        });
+        $assetService = $this->app->make(AssetServiceContract::class);
+
+        $assetUrl = $assetService->get(static::ASSET_PATH);
+        $this->assertTrue(parse_url($assetUrl, PHP_URL_SCHEME) === 'http');
+    }
+
+    /**
+     * Test asset path.
+     */
+    public function testPath()
     {
         /** @var AssetService $assetService */
 
         $assetService = $this->app->make(AssetServiceContract::class);
 
-        $assetUrl = $assetService->get('css/styles.css', false);
-        $this->assertTrue(strpos($assetUrl, 'css/styles.css') !== false);
+        $assetUrl = $assetService->get(static::ASSET_PATH, false);
+        $this->assertTrue(strpos($assetUrl, static::ASSET_PATH) !== false);
 
-        $secureAssetUrl = $assetService->get('css/styles.css', true);
-        $this->assertTrue(strpos($secureAssetUrl, 'css/styles.css') !== false);
+        $secureAssetUrl = $assetService->get(static::ASSET_PATH, true);
+        $this->assertTrue(strpos($secureAssetUrl, static::ASSET_PATH) !== false);
     }
 }
