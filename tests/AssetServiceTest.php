@@ -9,7 +9,7 @@ use Tooleks\LaravelAssetVersion\Contracts\AssetServiceContract;
 
 /**
  * Class AssetServiceTest
- * @property \Illuminate\Foundation\Application app
+ * @property Application app
  */
 class AssetServiceTest extends TestCase
 {
